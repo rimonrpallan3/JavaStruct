@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.example.javastructure"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    // Room components
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.archLifecycleVersion"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$rootProject.archLifecycleVersion"
+
+    // UI
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+
+    // Testing
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+
+    //Armadillo - Encrypted Shared Preference
+    implementation "at.favre.lib:armadillo:$preference_armadillo_version"
+
+    //Navigation is a framework for navigating between 'destinations'
+    implementation navigation_libraries
+
+    //RxJava mBinding APIs for Android UI widgets from the platform and support libraries
+    implementation rxbinding_libraries
+
+    //A type-safe HTTP client
+    implementation retrofit_libraries
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //RX java
+    implementation "io.reactivex.rxjava3:rxandroid:$rx_java_version"
+    implementation "io.reactivex.rxjava3:rxjava:$rx_java_version"
+
+    //Support library
+    implementation "androidx.appcompat:appcompat:$support_library_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+    implementation "androidx.legacy:legacy-support-v4:$legacy_support_version"
+    //material design
+    implementation "com.google.android.material:material:$material_design_version"
+
+    //pagination library
+    implementation "androidx.paging:paging-runtime-ktx:$pagination_library_version"
+
+
+    //Testing
+    testImplementation "junit:junit:$test_junit_version"
+    androidTestImplementation "androidx.test:runner:$test_runner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$test_espresso_version"
+
+
+}
